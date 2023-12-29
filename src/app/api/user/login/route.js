@@ -1,4 +1,4 @@
-import { CreateToken } from "@/app/utility/JWTTokenHelper";
+import { CreateToken } from "@/utility/JWTTokenHelper";
 import { PrismaClient } from "@prisma/client";
 import { NextResponse } from "next/server";
 
