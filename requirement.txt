@@ -1,0 +1,65 @@
+1. News Project Features
+
+ . Dynamic Header Top with social links.
+ . Navabar with dynamic news categories.
+ . Navbar Search option | Login Logout Option
+ . Latest News, Popular News  Features"								
+ . News By Category										
+ . Subscribe Option										
+ . Standard Policy & Terms Page										
+ . Dynamic Footer										
+ . Recommended Category at Footer										
+ . News Details & User Comment Option										
+ . SEO features										
+ . User Login Registration, Password Recover Option								
+ . User profile dashboard										
+ . User comments are managed from the dashboard	
+
+
+Framework & Languages	
+										
+·Next.js Front End Back End
+.Prisma Database Migration & Query Builder									
+.MySQL Database	
+
+								
+Project Step-01	Database Creation
+										
+-Create a new next.js project & integrate Prisma with that					
+-Create necessary database migration											
+-Complete the database first
+
+
+Project  Step-02 Working With Back-End
+									
+·API Routes for user management -Login, Registration, Password Recovery, & Profile
+.API Routes for subscribers									
+· APl Routes for socials									
+.API Routes for policies					
+.API Routes for news category									
+.API Routes for news-list by category									
+.API Routes for news-list by type latest, popular & more									
+.API Routes for news-list by search									
+.API Routes for Slider News, Featured News									
+.API Routes for News Details									
+.API Routes for user comments	
+
+
+Project  Step-03 Working With Front-End	
+														
+-Navbar														
+-Home Page -Hero Section																		
+-Home page -Latest Section														
+-Popular section														
+-Subscription section														
+-Footer														
+-News list by category page														
+-News list by search page											
+-News details page														
+-Page for policies														
+-User Login Page														
+-User Registration Page														
+-User Password Recover Pages														
+-User Dashboard														
+-User Profile Update Section														
+-User Comments Section & Pages	
