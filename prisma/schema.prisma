@@ -51,9 +51,9 @@ model users {
 
 model comments {
   id           Int       @id @default(autoincrement())
-  userId       Int
+  userID       Int
   postID       Int
-  users        users     @relation(fields: [userId], references: [id], onDelete: Restrict, onUpdate: Cascade)
+  users        users     @relation(fields: [userID], references: [id], onDelete: Restrict, onUpdate: Cascade)
   news_list    news_list @relation(fields: [postID], references: [id], onDelete: Restrict, onUpdate: Cascade)
   descriptions String    @db.VarChar(1000)
   createdAt    DateTime  @default(now()) @db.Timestamp(0)
