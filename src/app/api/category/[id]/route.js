@@ -5,13 +5,11 @@ import { NextResponse } from "next/server";
 
 export async function GET(req, res){
     try {
-        const {searchParams} = new URL(req.url);
-        const id = parseInt(searchParams.get('id'))
-
+        const id = res.params.id;
         const prisma = new PrismaClient();
-        const result = await prisma.news_list.findMany({
-            where: {id},
-            include: {categories: true}
+        const result = await prisma.categories.findUnique({
+            where: {id: parseInt(id)},
+            select: {name: true}
         })
         return NextResponse.json({status: "success", data: result})
     } catch (error) {

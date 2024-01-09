@@ -2,26 +2,55 @@
 @tailwind components;
 @tailwind utilities;
 
-:root {
-  --foreground-rgb: 0, 0, 0;
-  --background-start-rgb: 214, 219, 220;
-  --background-end-rgb: 255, 255, 255;
+@font-face {
+  font-family: "falling";
+  src: url("/fonts/fallingSky.otf") format("otf")
+}
+@font-face {
+  font-family: "dailymirror";
+  src: url("/fonts/Dailymirror.ttf") format("ttf")
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --foreground-rgb: 255, 255, 255;
-    --background-start-rgb: 0, 0, 0;
-    --background-end-rgb: 0, 0, 0;
-  }
+p{
+    font-family: dailymirror;
+}
+h1, h2, h3, h4, h5, h6{
+    font-family: dailymirror;
+}
+a{
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
 }
 
-body {
-  color: rgb(var(--foreground-rgb));
-  background: linear-gradient(
-      to bottom,
-      transparent,
-      rgb(var(--background-end-rgb))
-    )
-    rgb(var(--background-start-rgb));
+
+.post-details h1,
+.post-details h2,
+.post-details h3,
+.post-details h4,
+.post-details h5,
+.post-details h6
+{
+@apply text-themeColor text-2xl font-semibold mt-3;
+}
+.post-details p{
+  font-size: 20px;
+}
+
+/* width */
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  @apply bg-themeColor rounded-xl;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #555;
 }
