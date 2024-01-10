@@ -1,9 +1,12 @@
 "use client";
 import { Swiper, SwiperSlide } from "swiper/react";
-import { Navigation, Pagination, Scrollbar, A11y } from "swiper/modules";
+// import { Navigation, Pagination, Scrollbar, A11y } from "swiper/modules";
+import { Navigation, Pagination, Mousewheel, Keyboard,Scrollbar, A11y } from 'swiper/modules';
 import "swiper/css";
 import Link from "next/link";
 import Image from "next/image";
+import 'swiper/css/navigation';
+import 'swiper/css/pagination';
 
 const Hero = ({ sliders, featured }) => {
   return (
@@ -17,6 +20,7 @@ const Hero = ({ sliders, featured }) => {
             navigation
             pagination={{ clickable: true }}
             scrollbar={{ draggable: true }}
+            className="heroSlider"
             onSwiper={(swiper) => console.log(swiper)}
             onSlideChange={() => console.log("slide change")}
           >
@@ -32,7 +36,7 @@ const Hero = ({ sliders, featured }) => {
                       alt={slide.title}
                     />
                     <div
-                      className="absolute bottom-0 w-full text-center text-white py-3 rounded-lg"
+                      className="absolute bottom-0 w-full text-center text-white py-3 rounded-lg pb-8"
                       style={{ background: "rgba(0, 0, 0, .5)" }}
                     >
                       <h2 className="text-2xl">{slide.title}</h2>

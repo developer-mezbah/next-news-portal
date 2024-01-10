@@ -38,7 +38,7 @@ const Footer = ({ data }) => {
                   categories.slice(0, 4).map((category) => (
                     <li key={category.id} className="mb-4">
                       <Link
-                        href={`/category?id=${category.name}`}
+                        href={`/category?id=${category.id}`}
                         className="hover:underline "
                       >
                         {category.name}

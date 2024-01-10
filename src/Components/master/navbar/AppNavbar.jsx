@@ -5,13 +5,16 @@ import { IoSearch } from "react-icons/io5";
 import "./AppNavbar.css";
 import DropDown from "./DropDown";
 import { useEffect, useRef, useState } from "react";
+import { useDebouncedCallback } from "use-debounce";
 
 const AppNavbar = ({ categories }) => {
   const [toogleAvatar, setToogleAvatar] = useState(false);
   const [serarchInput, setSearchInput] = useState("");
+  const [searchList, setSearchList] = useState({});
 
   // DropDown hidden when click outside
   const popupRef = useRef(null);
+  const searchListRef = useRef(null);
   useEffect(() => {
     const handleClickOutside = (e) => {
       if (popupRef.current && !popupRef.current.contains(e.target)) {
@@ -29,8 +32,19 @@ const AppNavbar = ({ categories }) => {
   }, [toogleAvatar]);
   // ref={popupRef} use in current DropDown div
   // Dropdown program End
+
+  // Real time searchList change
+  const handleSearch = useDebouncedCallback((e) => {
+    setSearchInput(e.target.value);
+    console.log(serarchInput.length);
+    fetch(`/api/news/search?keyword=${e.target.value}`)
+      .then((response) => response.json())
+      .then((data) => {
+        setSearchList(data.data);
+      });
+  }, 300);
   return (
-    <div className=" py-3">
+    <div className="py-3">
       <div className="container mx-auto sm:flex justify-between items-center">
         <div className="logo">
           <Link href={"/"}>
@@ -58,14 +72,15 @@ const AppNavbar = ({ categories }) => {
               ))}
           </ul>
         </div>
-        <div className="flex items-center gap-3 justify-between px-5 sm:pr-0">
+        <div className="flex items-center gap-3 justify-between px-5 sm:pr-0 relative">
           <div className="inputBox flex items-center">
             <input
               className="border-2 border-gray-500 border-r-0 rounded-tl-md rounded-bl-md p-[5px] outline-none hover:border-themeColor"
               type="text"
               placeholder="Search..."
-              value={serarchInput}
-              onChange={(e) => setSearchInput(e.target.value)}
+              // value={serarchInput}
+              // onChange={(e) => setSearchInput(e.target.value)}
+              onChange={(e) => handleSearch(e)}
             />
             <Link
               href={
@@ -94,7 +109,7 @@ const AppNavbar = ({ categories }) => {
             {toogleAvatar && (
               <div
                 ref={popupRef}
-                className="absolute w-[200px] bg-black right-[0%] mt-5 rounded-lg navbar-dropdown text-white p-5"
+                className="navbar-dropdown absolute w-[200px] bg-black right-[0%] mt-5 rounded-lg text-white p-5 z-50"
               >
                 <ul className=" space-y-1">
                   <li>
@@ -114,6 +129,36 @@ const AppNavbar = ({ categories }) => {
             )}
           </div>
         </div>
+        {searchList.length > 0 && (
+          <div className="absolute md:right-[10%] sm:top-[120px] bg-black md:w-[500px] mx-5 z-[999999] text-white p-4 rounded-lg">
+            <h2 className="text-white mt-3 text-2xl font-bold">Search Lists</h2>
+            <ul className="mt-5">
+              <span onClick={() => setSearchList({})} className="close">
+                +
+              </span>
+              {searchList.map((list) => (
+                <li key={list.id} className="mt-3">
+                  <div className="flex items-center justify-between gap-3">
+                    <Image
+                      className="h-[70px] w-[70px] object-cover"
+                      src={list.img1}
+                      width={100}
+                      height={100}
+                      alt="search iamge"
+                    />
+                    <Link
+                      href={`/details?id=${list.id}`}
+                      className="hover:underline text-xl"
+                    >
+                      {list.title}
+                    </Link>
+                  </div>
+                  <hr className="bg-themeColor border-0 outline-none h-1 rounded-xl" />
+                </li>
+              ))}
+            </ul>
+          </div>
+        )}
       </div>
     </div>
   );

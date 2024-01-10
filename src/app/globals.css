@@ -35,6 +35,49 @@ a{
   font-size: 20px;
 }
 
+
+.close{
+  color: red;
+  position: absolute;
+  right: 10px;
+  top: 15px;
+  border: 2px solid red;
+  font-size: 40px;
+  line-height: 1;
+  height: 50px;
+  width: 50px;
+  text-align: center;
+  border-radius: 50%;
+  cursor: pointer;
+  transform: rotate(45deg);
+}
+
+.heroSlider .swiper-pagination-bullet.swiper-pagination-bullet-active{
+  opacity: 1;
+  background: #001eff;
+}
+.heroSlider .swiper-pagination-bullet{
+  opacity: .6;
+  background: #fff;
+  width: 60px;
+  border-radius: 0;
+  height: 5px;
+}
+
+
+.wavy-underline{
+  text-decoration: underline wavy #0BA7E4;
+}
+
+
+
+
+
+
+
+
+
+
 /* width */
 ::-webkit-scrollbar {
   width: 10px;

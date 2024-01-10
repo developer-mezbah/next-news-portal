@@ -4,7 +4,7 @@ import PlainLayout from '@/Components/master/PlainLayout';
 
 async function getData(id){
   const catPosts = await (await fetch(`${process.env.BASE_URL}/api/news/category?catID=${id}`)).json()
-  const popular = await (await fetch(`${process.env.BASE_URL}/api/news/latest-post`)).json()
+  const popular = await (await fetch(`${process.env.BASE_URL}/api/news/type?type=Popular`)).json()
   const catName = await (await fetch(`${process.env.BASE_URL}/api/category/${id}`)).json()
   return {catPosts,popular, catName}
 }
@@ -12,7 +12,6 @@ async function getData(id){
 const category = async ({searchParams}) => {
   const id = searchParams.id;
   const {catPosts, popular, catName} = await getData(id)
-  console.log(catName);
   return (
     <PlainLayout>
       
