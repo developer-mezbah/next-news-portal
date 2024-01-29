@@ -27,7 +27,6 @@ export async function POST(req, res) {
 
     let reqBody = await req.json();
     reqBody.userID = id;
-
     const prisma = new PrismaClient();
     const result = await prisma.comments.create({
       data: reqBody,

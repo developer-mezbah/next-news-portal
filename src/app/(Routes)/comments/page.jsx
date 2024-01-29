@@ -1,8 +1,11 @@
+import PlainLayout from '@/Components/master/PlainLayout'
 import React from 'react'
 
 const comments = () => {
   return (
-    <div>comments</div>
+    <PlainLayout>
+      Comments
+    </PlainLayout>
   )
 }
 

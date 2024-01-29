@@ -13,7 +13,7 @@ async function getData(id) {
     await fetch(`${process.env.BASE_URL}/api/news/type?type=popular`)
   ).json();
   const commentLists = await (
-    await fetch(`${process.env.BASE_URL}/api/comments/news?postID=${id}`)
+    await fetch(`${process.env.BASE_URL}/api/comments/news?postID=${id}`, {cache: 'no-cache'})
   ).json();
   return { postDetails, popular, commentLists };
 }
@@ -28,7 +28,7 @@ const details = async ({ searchParams }) => {
         <div className="flex gap-4">
           <div className="mx-auto w-3/4 my-5 flex flex-col gap-5">
             <NewsDetails postDetails={postDetails}/>
-            <CommentLists postID={id} data={commentLists}/>
+            <CommentLists postID={id} commentLists={commentLists}/>
           </div>
           <div className="w-1/4 lg:block hidden mb-5">
             <PopularList popularLists={popular}/>

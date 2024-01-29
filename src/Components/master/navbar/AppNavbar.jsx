@@ -1,13 +1,13 @@
 "use client";
 import Image from "next/image";
 import Link from "next/link";
+import { useEffect, useRef, useState } from "react";
 import { IoSearch } from "react-icons/io5";
+import { useDebouncedCallback } from "use-debounce";
 import "./AppNavbar.css";
 import DropDown from "./DropDown";
-import { useEffect, useRef, useState } from "react";
-import { useDebouncedCallback } from "use-debounce";
 
-const AppNavbar = ({ categories }) => {
+const AppNavbar = ({ categories, isLogin }) => {
   const [toogleAvatar, setToogleAvatar] = useState(false);
   const [serarchInput, setSearchInput] = useState("");
   const [searchList, setSearchList] = useState({});
@@ -118,13 +118,32 @@ const AppNavbar = ({ categories }) => {
                   <li>
                     <Link href={"/"}>Home</Link>
                   </li>
+                  {!isLogin && (
+                    <li>
+                      <Link href={"/user/login"}>Login</Link>
+                    </li>
+                  )}
+                  {!isLogin && (
+                    <li>
+                      <Link href={"/user/registration"}>Register</Link>
+                    </li>
+                  )}
+                  {isLogin && (
+                    <li>
+                      <Link href={"/user/registration"}>Comments</Link>
+                    </li>
+                  )}
                   <li className="lg:hidden block">
                     <DropDown categories={categories} />
                   </li>
                 </ul>
-                <button className="hover:bg-red-400 w-full p-1 border-2 border-red-500 mt-3 rounded-lg">
-                  Sign Out
-                </button>
+                {isLogin && (
+                  <a href="/api/user/login">
+                    <button className="hover:bg-red-400 w-full p-1 border-2 border-red-500 mt-3 rounded-lg">
+                      Sign Out
+                    </button>
+                  </a>
+                )}
               </div>
             )}
           </div>
