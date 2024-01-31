@@ -1,0 +1,9 @@
+
+DATABASE_URL="mysql://root:@localhost:3306/ostad-news-portal"
+
+
+JWT_SECRET="Mezbah_Uddin-999"
+JWT_ISSUER="Localhost"
+JWT_EXPIRATION_TIME="24h"
+
+BASE_URL=http://localhost:3000
